@@ -1,0 +1,4 @@
+include ':app'
+rootProject.name = "UnityIntegrationBaseApp"
+include ':unityLibrary'
+project(':unityLibrary').projectDir=new File('..\\TapGame\\unityLibrary')
