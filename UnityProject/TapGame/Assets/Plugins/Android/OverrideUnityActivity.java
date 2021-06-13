@@ -1,6 +1,5 @@
 package com.OneDevApp.TapGame;
 import android.os.Bundle;
-import android.widget.FrameLayout;
 
 import com.unity3d.player.UnityPlayerActivity;
 

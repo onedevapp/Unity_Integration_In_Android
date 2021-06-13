@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoInstance<GameManager>
+public class NativeSceneManager : MonoInstance<NativeSceneManager>
 {
 #if UNITY_ANDROID && !UNITY_EDITOR
     AndroidJavaClass UnityPlayer;
@@ -15,9 +15,6 @@ public class GameManager : MonoInstance<GameManager>
 #if UNITY_ANDROID && !UNITY_EDITOR
         UnityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
         currentActivity = UnityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-        
-        //UnityPlayer = new AndroidJavaClass("com.OneDevApp.TapGame.OverrideUnityActivity");
-        //currentActivity = UnityPlayer.GetStatic<AndroidJavaObject>("instance");
 
         AndroidJavaObject intent = currentActivity.Call<AndroidJavaObject>("getIntent");
         AndroidJavaObject extras = intent.Call<AndroidJavaObject>("getExtras");
@@ -37,11 +34,11 @@ public class GameManager : MonoInstance<GameManager>
         }
         else
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(1);//Default Scene
         }
 
 #elif UNITY_EDITOR
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(1);//Default Scene
 #endif
     }
 

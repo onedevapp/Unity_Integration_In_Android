@@ -13,7 +13,7 @@ public class SceneB : MonoBehaviour
     void Start()
     {
         tapCount = 0;
-        int highScore = GameManager.Instance.lastHighScore;
+        int highScore = NativeSceneManager.Instance.lastHighScore;
         scoreText.text = "<size=8>HighScore</size>\n" + highScore;
     }
 
@@ -26,6 +26,6 @@ public class SceneB : MonoBehaviour
 
     public void buttonFinish()
     {
-        GameManager.Instance.onGameFinish(tapCount);
+        NativeSceneManager.Instance.onGameFinish(tapCount);
     }
 }

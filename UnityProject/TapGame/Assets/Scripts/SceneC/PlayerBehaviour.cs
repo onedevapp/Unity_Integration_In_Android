@@ -50,6 +50,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void buttonFinish()
     {
-        GameManager.Instance.onGameFinish(0);
+        NativeSceneManager.Instance.onGameFinish(0);
     }
 }
