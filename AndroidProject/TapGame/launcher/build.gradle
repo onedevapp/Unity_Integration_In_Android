@@ -7,8 +7,8 @@ dependencies {
     }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '30.0.0'
+    compileSdkVersion 29
+    buildToolsVersion '28.0.3'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -17,10 +17,10 @@ android {
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 29
         applicationId 'com.OneDevApp.TapGame'
         ndk {
-            abiFilters 'armeabi-v7a'
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
         versionCode 1
         versionName '0.1'
@@ -53,6 +53,7 @@ android {
 
     packagingOptions {
         doNotStrip '*/armeabi-v7a/*.so'
+        doNotStrip '*/arm64-v8a/*.so'
     }
 
     bundle {

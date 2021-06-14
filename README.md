@@ -1,6 +1,9 @@
 # Embed Unity 3D in a Native Android App
 This project covers the process of integrating a game made with Unity within a Native Android Application with multi scene.
 
+<img src="ScreenShots/output_embed_unity_in_android.gif" width=270 height=540>
+
+
 ## Getting Started
 
 ### Unity
@@ -8,6 +11,10 @@ This project covers the process of integrating a game made with Unity within a N
 I have made a game using Unity, in which the score increments on clicking the **TAP** button. On clicking the **Finish** button, the game ends.
 
 Create new java abstract class OverrideUnityActivity.java inside Assets/Plugins/Android folder.
+
+<img src="ScreenShots/OverrideUnityActivity_SS.png">
+
+<br>
 
 ```Java
 package {Your App Package Name};
@@ -47,6 +54,9 @@ public abstract class OverrideUnityActivity extends UnityPlayerActivity
 
 This will export your Unity project to Android one.
 
+<img src="ScreenShots/Project_Settings_SS.png">
+<img src="ScreenShots/Export_Project_SS.png">
+
 <br>
 
 ### Android Studio
@@ -56,19 +66,38 @@ File → New → Import project → Select your export folder from above step.
 - In a pop-up asking me if I should use the project SDK or Android SDK I chose to use Android SDK (which is newer than the one of the Unity project).
 - In a pop-up asking me if I want to update Gradle and I pressed Update.
 
-Now we will create a sample Android project. Open Android Studio and create a new project inside the root folder. Select the template of Basic Activity.
+Now we will create a sample Android project. Open Android Studio and create a new project inside the root folder. Select the template of Empty Activity.
+
+<img src="ScreenShots/New_Android_Project.png">
+<br>
+Project structure for folders
+
+<br>
+<img src="ScreenShots/Android_Project_Structure.png">
+
+<br>
 
 Now we will integrate Unity as a library into the Android App. Open **settings.gradle** file and add below code at the end.
 ```gradle
 include ':unityLibrary'
 project(':unityLibrary').projectDir=new File('..\\TapGame\\unityLibrary')
 ```
+
+<img src="ScreenShots/Settiings_Gradle_SS.png">
+
+<br>
+
 Open **build.gradle(Module: app)** file and add the below in dependencies { block }
 
 ```gradle
 implementation project(':unityLibrary')
 implementation fileTree(dir: project(':unityLibrary').getProjectDir().toString() + ('\\libs'), include: ['*.jar'])
 ```
+
+<img src="ScreenShots/Build_App_Gradle.png">
+
+<br>
+
 Open **build.gradle(Project:app)** and add the below in allprojects{repositories{ block }
 ```gradle
 flatDir {
@@ -76,10 +105,18 @@ flatDir {
 }
 ```
 
+<img src="ScreenShots/Build_Project_Gradle.png">
+
+<br>
+
 After completing the changes above, we will see a message asking us to do the Gradle Sync. Click on Sync Now.
 
 If you’ve followed the steps correctly, then you’ll see that the unityLibrary is now also added into the sample Android project.
 
+
+<img src="ScreenShots/Android_Project_Structure_In_Studio.png">
+
+<br>
 <br>
 
 ### 1. Android (Java) -> Unity (C#)
